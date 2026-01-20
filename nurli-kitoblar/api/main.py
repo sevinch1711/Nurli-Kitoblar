@@ -3,6 +3,7 @@ import uuid
 import shutil
 import pdfplumber
 import edge_tts
+import uvicorn
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -71,5 +72,6 @@ async def convert_pdf(
             os.remove(temp_pdf)
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Render beradigan portni olamiz, agar bo'lmasa 8000 ishlatamiz
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
