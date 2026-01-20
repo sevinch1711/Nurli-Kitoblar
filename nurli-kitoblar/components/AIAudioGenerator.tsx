@@ -28,8 +28,7 @@ const AIAudioGenerator: React.FC<AIAudioGeneratorProps> = ({ strings }) => {
     formData.append("voice", "uz-UZ-MadinaNeural");
 
     try {
-      // Localhost Python serverga murojaat
-      const response = await fetch("http://localhost:8000/api/convert", {
+        const response = await fetch("https://nurli-kitoblar.onrender.com/api/convert", {
         method: "POST",
         body: formData,
       });
@@ -43,7 +42,7 @@ const AIAudioGenerator: React.FC<AIAudioGeneratorProps> = ({ strings }) => {
       const url = URL.createObjectURL(blob);
       setAudioUrl(url);
     } catch (err: any) {
-      setError("Backend server o'chiq. Terminalda 'python main.py' ni yoqing.");
+        setError("Server bilan bog'lanishda xatolik. Iltimos, keyinroq urinib ko'ring.");
     } finally {
       setLoading(false);
     }
