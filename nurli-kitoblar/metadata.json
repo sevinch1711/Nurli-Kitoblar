@@ -1,0 +1,8 @@
+{
+  "name": "NoorReader AI",
+  "description": "A sophisticated multi-language eBook reader with Gemini-powered OCR, high-quality TTS, and real-time voice conversation capabilities.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
