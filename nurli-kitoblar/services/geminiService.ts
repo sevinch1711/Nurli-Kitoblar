@@ -4,9 +4,10 @@ import { GoogleGenAI, Modality, Type, GenerateContentResponse } from "@google/ge
 export class GeminiService {
   private ai: GoogleGenAI;
 
-  constructor() {
-    this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
-  }
+ constructor() {
+  const key = import.meta.env.VITE_API_KEY || process.env.API_KEY || "";
+  this.ai = new GoogleGenAI({ apiKey: key as string });
+}
 
   async chatWithAI(history: {role: string, parts: {text: string}[]}[], message: string): Promise<string> {
     const response = await this.ai.models.generateContent({
